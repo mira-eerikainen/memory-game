@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,200;0,300;0,400;0,500;0,600;1,300&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Raleway', sans-serif;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  background-image: linear-gradient(
+    90deg,
+    hsl(266deg 100% 44%),
+    hsl(265deg 81% 51%),
+    hsl(265deg 85% 56%),
+    hsl(265deg 89% 60%),
+    hsl(266deg 94% 64%),
+    hsl(266deg 100% 68%)
+  );
+}
+
+h1 {
+  color: white;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 1em;
+  height: 700px;
+  width: 700px;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  color: black;
+  box-shadow:
+    0 1px 1px hsl(0deg 0% 0% / 0.075),
+    0 2px 2px hsl(0deg 0% 0% / 0.075),
+    0 4px 4px hsl(0deg 0% 0% / 0.075),
+    0 8px 8px hsl(0deg 0% 0% / 0.075),
+    0 16px 16px hsl(0deg 0% 0% / 0.075);
+  font-size: 60px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transform: rotate(180deg);
+  animation: 3s hideCard ease-in-out;
+  transition: transform 0.5s;
+}
+@keyframes hideCard {
+  0%{
+    transform: rotateY(0);
+  }
+  100%{
+    transform: rotateY(180deg)
+  }
+}
+
+.card:hover {
+  background-color: hsl(266deg 100% 90%);
+  border-top: solid hsl(0deg 0% 0% / 0.25) 5px;
+  border-right: solid hsl(0deg 0% 0% / 0.25) 3px;
+}
+
+.card.active {
+  transform: rotate(0);
+}
+
+.card.wrong {
+  color: white;
+  background-image: linear-gradient(
+    45deg,
+    hsl(346deg 65% 59%) 0%,
+    hsl(22deg 80% 64%) 63%,
+    hsl(45deg 95% 58%) 100%
+  );
+}
+
+.card.correct {
+  color: white;
+  background-image: linear-gradient(
+    45deg,
+    hsl(92deg 98% 35%) 0%,
+    hsl(80deg 78% 55%) 63%,
+    hsl(68deg 59% 74%) 100%
+  );
+}
+
+.card.active .number {
+  transform: scale(1);
+}
+
+.number {
+  transform: scale(0);
+  animation: 1s hideNumber ease-in-out;
+  transition: transform 0.5s;
+}
+@keyframes hideNumber {
+  0%{
+    transform: scale(1);
+  }
+  100%{
+    transform: scale(0);
+  }
+  
+}
